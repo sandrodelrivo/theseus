@@ -1,0 +1,22 @@
+[remap]
+
+importer="vnen.tiled_tileset_importer"
+type="TileSet"
+path="res://.import/simple_dungeon_set.tsx-9c2afef38133ef10ba264da0db91197d.res"
+
+[deps]
+
+source_file="res://caves/simple_dungeon_set.tsx"
+source_md5="10f404f521ba2bf1ddbbe63a67d176a4"
+
+dest_files=[ "res://.import/simple_dungeon_set.tsx-9c2afef38133ef10ba264da0db91197d.res" ]
+dest_md5="e9da8c0d9a213d6d5137c10a650708ca"
+
+[params]
+
+custom_properties=true
+tile_metadata=false
+image_flags=7
+embed_internal_images=false
+save_tiled_properties=false
+post_import_script=""
