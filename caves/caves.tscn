@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://caves/cave.tmx" type="PackedScene" id=1]
-[ext_resource path="res://caves/bat.tscn" type="PackedScene" id=2]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://caves/rooms.gd" type="Script" id=3]
+[ext_resource path="res://caves/bat.tscn" type="PackedScene" id=4]
 
 [node name="Node2D" type="Node2D" index="0"]
 
@@ -9,16 +11,43 @@ _sections_unfolded = [ "Material", "Transform", "Z Index" ]
 
 [node name="cave" parent="." index="0" instance=ExtResource( 1 )]
 
-position = Vector2( -114.297, -79.5477 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Camera2D" type="Camera2D" parent="." index="1"]
+[node name="player" parent="." index="1" instance=ExtResource( 2 )]
 
-position = Vector2( 205.53, 341.194 )
+position = Vector2( 320, 592 )
+
+[node name="room_cams" type="Node2D" parent="." index="2"]
+
+editor/display_folded = true
+visible = false
+
+[node name="room1" type="Area2D" parent="room_cams" index="0"]
+
+editor/display_folded = true
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 3 )
+
+[node name="polygon" type="CollisionPolygon2D" parent="room_cams/room1" index="0"]
+
+position = Vector2( 0, 144 )
+build_mode = 0
+polygon = PoolVector2Array( 256, 496, 256, 384, 384, 384, 384, 496 )
+
+[node name="camera" type="Camera2D" parent="room_cams/room1" index="1"]
+
+visible = false
+position = Vector2( 320, 576 )
 anchor_mode = 1
 rotating = false
-current = true
-zoom = Vector2( 0.4, 0.4 )
+current = false
+zoom = Vector2( 0.5, 0.5 )
 limit_left = -10000000
 limit_top = -10000000
 limit_right = 10000000
@@ -37,17 +66,163 @@ drag_margin_bottom = 0.2
 editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
+_sections_unfolded = [ "Transform" ]
 
-[node name="bat" parent="." index="2" instance=ExtResource( 2 )]
+[node name="room2" type="Area2D" parent="room_cams" index="1"]
 
-position = Vector2( 221.5, 347.396 )
+editor/display_folded = true
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 3 )
 
-[node name="bat2" parent="." index="3" instance=ExtResource( 2 )]
+[node name="polygon" type="CollisionPolygon2D" parent="room_cams/room2" index="0"]
 
-position = Vector2( 164.052, 367.687 )
+build_mode = 0
+polygon = PoolVector2Array( 256, 464, 256, 384, 384, 384, 384, 464 )
 
-[node name="bat3" parent="." index="4" instance=ExtResource( 2 )]
+[node name="camera" type="Camera2D" parent="room_cams/room2" index="1"]
 
-position = Vector2( 184.607, 341.335 )
+visible = false
+position = Vector2( 320, 432 )
+anchor_mode = 1
+rotating = false
+current = false
+zoom = Vector2( 0.5, 0.5 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = false
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="room3" type="Area2D" parent="room_cams" index="2"]
+
+editor/display_folded = true
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 3 )
+
+[node name="polygon" type="CollisionPolygon2D" parent="room_cams/room3" index="0"]
+
+position = Vector2( 0, -128 )
+build_mode = 0
+polygon = PoolVector2Array( 192, 464, 192, 272, 384, 272, 384, 464 )
+
+[node name="camera" type="Camera2D" parent="room_cams/room3" index="1"]
+
+visible = false
+position = Vector2( 288, 240 )
+anchor_mode = 1
+rotating = false
+current = false
+zoom = Vector2( 0.5, 0.5 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = false
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="room4" type="Area2D" parent="room_cams" index="3"]
+
+editor/display_folded = true
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 3 )
+
+[node name="polygon" type="CollisionPolygon2D" parent="room_cams/room4" index="0"]
+
+position = Vector2( -176, -144 )
+build_mode = 0
+polygon = PoolVector2Array( 192, 496, 192, 272, 304, 272, 304, 496 )
+
+[node name="camera" type="Camera2D" parent="room_cams/room4" index="1"]
+
+visible = false
+position = Vector2( 80, 208 )
+anchor_mode = 1
+rotating = false
+current = false
+zoom = Vector2( 0.5, 0.5 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = false
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+_sections_unfolded = [ "Transform" ]
+
+[node name="bat" parent="." index="3" instance=ExtResource( 4 )]
+
+position = Vector2( 288, 416 )
+
+[node name="bat2" parent="." index="4" instance=ExtResource( 4 )]
+
+position = Vector2( 320, 448 )
+
+[node name="bat3" parent="." index="5" instance=ExtResource( 4 )]
+
+position = Vector2( 352, 416 )
+
+[connection signal="body_entered" from="room_cams/room1" to="room_cams/room1" method="_on_rooms_body_entered"]
+
+[connection signal="body_entered" from="room_cams/room2" to="room_cams/room2" method="_on_rooms_body_entered"]
+
+[connection signal="body_entered" from="room_cams/room3" to="room_cams/room3" method="_on_rooms_body_entered"]
+
+[connection signal="body_entered" from="room_cams/room4" to="room_cams/room4" method="_on_rooms_body_entered"]
 
 
