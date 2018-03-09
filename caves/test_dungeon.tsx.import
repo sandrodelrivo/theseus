@@ -7,10 +7,10 @@ path="res://.import/test_dungeon.tsx-0b82272ead2903cdcc6190f6eeae238b.res"
 [deps]
 
 source_file="res://caves/test_dungeon.tsx"
-source_md5="3dc83f6270590ab393686d4d4146983e"
+source_md5="4c95d908adce9108a1351f5c629681db"
 
 dest_files=[ "res://.import/test_dungeon.tsx-0b82272ead2903cdcc6190f6eeae238b.res" ]
-dest_md5="1f4b0a4cb4838584975af3db60d569b3"
+dest_md5="805a1e9e63320c2923585ed739f20bb0"
 
 [params]
 

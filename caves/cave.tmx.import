@@ -7,7 +7,7 @@ path="res://.import/cave.tmx-cb9159e8b25d31e63f7c448697ceed04.scn"
 [deps]
 
 source_file="res://caves/cave.tmx"
-source_md5="c15d8349aa7073dac04ad574c2aa2fe6"
+source_md5="0aadb0d66c368c96bf93134af8b85631"
 
 dest_files=[ "res://.import/cave.tmx-cb9159e8b25d31e63f7c448697ceed04.scn" ]
 dest_md5="bda957c54aef741ba6cea326c43ad7a7"

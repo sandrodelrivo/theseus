@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tileset name="simple_set" tilewidth="16" tileheight="16" tilecount="960" columns="30">
- <image source="../../dungeon tileset calciumtrice simple.png" width="480" height="512"/>
+ <image source="assets/calcium_complex_sheet.png" width="480" height="512"/>
  <tile id="30">
   <objectgroup draworder="index">
    <object id="1" type="collision" x="0" y="0" width="16" height="16"/>
