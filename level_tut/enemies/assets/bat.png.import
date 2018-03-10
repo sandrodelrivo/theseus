@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/door_top_left.png-0a5f734dd7eeed3d833b78892868c3e5.stex"
+path="res://.import/bat.png-0995f4aecf4a2c631b9a9eb2898dd644.stex"
 
 [deps]
 
-source_file="res://caves/assets/door_top_left.png"
-source_md5="36ca48270a3c4f690f49f5858787c314"
+source_file="res://level_tut/enemies/assets/bat.png"
+source_md5="4a31b00aed54bb06a2b322856542885f"
 
-dest_files=[ "res://.import/door_top_left.png-0a5f734dd7eeed3d833b78892868c3e5.stex" ]
-dest_md5="c0bf2b2aa782f2028436d5acf747099f"
+dest_files=[ "res://.import/bat.png-0995f4aecf4a2c631b9a9eb2898dd644.stex" ]
+dest_md5="da64ede4b0469a8566b12c9c21df285d"
 
 [params]
 

@@ -2,14 +2,14 @@
 
 importer="vnen.tiled_importer"
 type="PackedScene"
-path="res://.import/cave.tmx-cb9159e8b25d31e63f7c448697ceed04.scn"
+path="res://.import/cave.tmx-66e7be053962d0eeced63c98b03e6570.scn"
 
 [deps]
 
-source_file="res://caves/cave.tmx"
+source_file="res://level_tut/tiles/cave.tmx"
 source_md5="0aadb0d66c368c96bf93134af8b85631"
 
-dest_files=[ "res://.import/cave.tmx-cb9159e8b25d31e63f7c448697ceed04.scn" ]
+dest_files=[ "res://.import/cave.tmx-66e7be053962d0eeced63c98b03e6570.scn" ]
 dest_md5="bda957c54aef741ba6cea326c43ad7a7"
 
 [params]

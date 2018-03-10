@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/golem.png-e07bb02f50ccaf3a33532b7bd8f293ec.stex"
+path="res://.import/calcium_complex_sheet.png-2e09ac1972be14817f864b3a9bd6a1bf.stex"
 
 [deps]
 
-source_file="res://caves/assets/golem.png"
-source_md5="bdbd47952fd89fc125e0a5e56bb3841c"
+source_file="res://level_tut/tiles/assets/calcium_complex_sheet.png"
+source_md5="ae90264d64ac6e43f48f3bff7000ad08"
 
-dest_files=[ "res://.import/golem.png-e07bb02f50ccaf3a33532b7bd8f293ec.stex" ]
-dest_md5="e8c6d070d3f4f9f06ba818487dd47d84"
+dest_files=[ "res://.import/calcium_complex_sheet.png-2e09ac1972be14817f864b3a9bd6a1bf.stex" ]
+dest_md5="598a0323b4bae83cb2619cac5880f282"
 
 [params]
 

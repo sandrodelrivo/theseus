@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/door_top_right.png-251c93a20cec7d9513785e6a7d2cfaee.stex"
+path="res://.import/calcium_sheet.png-51229eee9e186af8b41d0470df5b43f0.stex"
 
 [deps]
 
-source_file="res://caves/assets/door_top_right.png"
-source_md5="25e37f8e05cb9400ccceb1e652b292eb"
+source_file="res://level_tut/tiles/assets/calcium_sheet.png"
+source_md5="55f08dc7070f5539f3dd4a43b2935340"
 
-dest_files=[ "res://.import/door_top_right.png-251c93a20cec7d9513785e6a7d2cfaee.stex" ]
-dest_md5="cf2b52678ffd75328c65a5068c7328ac"
+dest_files=[ "res://.import/calcium_sheet.png-51229eee9e186af8b41d0470df5b43f0.stex" ]
+dest_md5="1cd87a4e1486bbe7e3de12abee7df340"
 
 [params]
 

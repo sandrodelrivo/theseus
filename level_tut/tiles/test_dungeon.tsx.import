@@ -2,15 +2,15 @@
 
 importer="vnen.tiled_tileset_importer"
 type="TileSet"
-path="res://.import/test_dungeon.tsx-0b82272ead2903cdcc6190f6eeae238b.res"
+path="res://.import/test_dungeon.tsx-347fdbda19a430c83ccbe2884e3c6b8c.res"
 
 [deps]
 
-source_file="res://caves/test_dungeon.tsx"
+source_file="res://level_tut/tiles/test_dungeon.tsx"
 source_md5="4c95d908adce9108a1351f5c629681db"
 
-dest_files=[ "res://.import/test_dungeon.tsx-0b82272ead2903cdcc6190f6eeae238b.res" ]
-dest_md5="805a1e9e63320c2923585ed739f20bb0"
+dest_files=[ "res://.import/test_dungeon.tsx-347fdbda19a430c83ccbe2884e3c6b8c.res" ]
+dest_md5="0e5b17a2886162b0f809f79d97fcc47f"
 
 [params]
 

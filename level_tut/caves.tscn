@@ -1,17 +1,15 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://caves/cave.tmx" type="PackedScene" id=1]
+[ext_resource path="res://level_tut/tiles/cave.tmx" type="PackedScene" id=1]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://caves/rooms.gd" type="Script" id=3]
-[ext_resource path="res://caves/bat.tscn" type="PackedScene" id=4]
+[ext_resource path="res://level_tut/rooms.gd" type="Script" id=3]
+[ext_resource path="res://level_tut/enemies/bat.tscn" type="PackedScene" id=4]
 
-[node name="Node2D" type="Node2D" index="0"]
+[node name="root" type="Node2D" index="0"]
 
 _sections_unfolded = [ "Material", "Transform", "Z Index" ]
 
 [node name="cave" parent="." index="0" instance=ExtResource( 1 )]
-
-_sections_unfolded = [ "Transform" ]
 
 [node name="player" parent="." index="1" instance=ExtResource( 2 )]
 
@@ -42,7 +40,6 @@ polygon = PoolVector2Array( 256, 496, 256, 384, 384, 384, 384, 496 )
 
 [node name="camera" type="Camera2D" parent="room_cams/room1" index="1"]
 
-visible = false
 position = Vector2( 320, 576 )
 anchor_mode = 1
 rotating = false
