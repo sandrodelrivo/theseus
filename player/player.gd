@@ -45,10 +45,8 @@ func setVelocity():
 	velocity = velocity.normalized()*speed
 	
 func _input(event):
-	if event.is_action_pressed("click_left") and event.is_pressed():
-		# sets tele_test position ot mouse position
-		var check = get_parent().get_node("tele_test")
-		check.position = get_global_mouse_position()
-		if ():
-			position = check
-		
+	if (event.is_action_pressed("click_left") and event.is_pressed()):
+		var pos = get_global_mouse_position()
+		while (test_move(Transform2D(0, pos), Vector2(0,0))):
+			pos+=(position-pos).normalized()
+		position = pos

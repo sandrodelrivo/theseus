@@ -12,12 +12,10 @@ func _ready():
 # 
 func _physics_process(delta):
 	
-	
 	velocity.x = speed * cos(angle)
 	velocity.y = speed * sin(angle)
 	
-	
-	var motion = velocity
+	var motion = velocity * delta
 	motion = move_and_collide(motion)
 
 	if motion != null:
