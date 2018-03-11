@@ -18,12 +18,10 @@ position = Vector2( 320, 592 )
 
 [node name="room_cams" type="Node2D" parent="." index="2"]
 
-editor/display_folded = true
 visible = false
 
 [node name="room1" type="Area2D" parent="room_cams" index="0"]
 
-editor/display_folded = true
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -32,12 +30,14 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="polygon" type="CollisionPolygon2D" parent="room_cams/room1" index="0"]
 
 position = Vector2( 0, 144 )
 build_mode = 0
 polygon = PoolVector2Array( 256, 496, 256, 384, 384, 384, 384, 496 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="camera" type="Camera2D" parent="room_cams/room1" index="1"]
 

@@ -16,7 +16,6 @@ func _physics_process(delta):
 	velocity.x = speed * cos(angle)
 	velocity.y = speed * sin(angle)
 	
-	print("bat", velocity)
 	
 	var motion = velocity
 	motion = move_and_collide(motion)
