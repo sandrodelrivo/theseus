@@ -18,7 +18,7 @@ texture = ExtResource( 2 )
 vframes = 8
 _sections_unfolded = [ "Animation", "Offset", "Transform" ]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="1"]
+[node name="collision" type="CollisionPolygon2D" parent="." index="1"]
 
 visible = false
 build_mode = 0

@@ -46,5 +46,9 @@ func setVelocity():
 	
 func _input(event):
 	if event.is_action_pressed("click_left") and event.is_pressed():
-		position = get_global_mouse_position()
+		# sets tele_test position ot mouse position
+		var check = get_parent().get_node("tele_test")
+		check.position = get_global_mouse_position()
+		if ():
+			position = check
 		
