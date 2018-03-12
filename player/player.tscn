@@ -1,9 +1,40 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://player/player_8d.png" type="Texture" id=2]
 
-[node name="player" type="KinematicBody2D" index="0"]
+[sub_resource type="Animation" id=1]
+
+resource_name = "swing_right"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("sword_col:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sword_col/CollisionPolygon2D:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 270.0, 450.0 ]
+}
+
+[node name="player" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 1
@@ -28,6 +59,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Camera2D" type="Camera2D" parent="." index="2"]
 
+position = Vector2( 0.0626755, 0 )
 anchor_mode = 1
 rotating = false
 current = true
@@ -51,5 +83,35 @@ editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
 _sections_unfolded = [ "Smoothing" ]
+
+[node name="player_anim" type="AnimationPlayer" parent="." index="3"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/swing_right = SubResource( 1 )
+blend_times = [  ]
+
+[node name="sword_col" type="Area2D" parent="." index="4"]
+
+position = Vector2( 0, 0.153141 )
+rotation = 6.28319
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Pickable", "Transform" ]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="sword_col" index="0"]
+
+rotation = 5.96903
+build_mode = 0
+polygon = PoolVector2Array( 0.210791, -2.08124, 14.4374, -2.08124, 14.4374, -0.451765, -0.0398998, -0.451765 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 

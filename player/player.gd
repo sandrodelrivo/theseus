@@ -4,9 +4,9 @@ extends KinematicBody2D
 var speed_max = 100
 var isMoving = false
 var speed = 0
-var dashSpeed = 5000
-var acc = 10
-var dec = 20
+var dashSpeed = 4000 # how far the dash moves
+var acc = 10 # acceleration interval
+var dec = 20 # deceleration interval
 var accelearation
 var velocity = Vector2()
 var facing = Vector2()
@@ -17,6 +17,10 @@ enum STATE{
 	idle,
 	move,
 	dash	
+}
+
+enum COMBAT_STATE{
+	
 }
 
 # runs when node is loaded
@@ -118,7 +122,6 @@ func setVelocity():
 		
 	# sets magnitude of velocity to speed
 	velocity = velocity.normalized()*speed
-
 
 	
 func dash():
