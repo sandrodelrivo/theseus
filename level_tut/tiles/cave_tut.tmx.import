@@ -1,0 +1,23 @@
+[remap]
+
+importer="vnen.tiled_importer"
+type="PackedScene"
+path="res://.import/cave_tut.tmx-f3a493739d9ace0f9e9a4d2321f1de55.scn"
+
+[deps]
+
+source_file="res://level_tut/tiles/cave_tut.tmx"
+source_md5="40f34ed7e43771418abc42dc61ad5df9"
+
+dest_files=[ "res://.import/cave_tut.tmx-f3a493739d9ace0f9e9a4d2321f1de55.scn" ]
+dest_md5="40447ae6229e1e699233fb24939fc504"
+
+[params]
+
+custom_properties=true
+tile_metadata=false
+uv_clip=true
+image_flags=7
+embed_internal_images=false
+save_tiled_properties=false
+post_import_script=""
