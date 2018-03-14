@@ -10,7 +10,7 @@ length = 1.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("sword_col:monitoring")
+tracks/0/path = NodePath("sword:monitoring")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -22,7 +22,7 @@ tracks/0/keys = {
 "values": [ false, true ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("sword_col/CollisionPolygon2D:rotation_degrees")
+tracks/1/path = NodePath("sword/collison:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -57,7 +57,7 @@ build_mode = 0
 polygon = PoolVector2Array( -8, -8, 8, -8, 8, 8, -8, 8 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Camera2D" type="Camera2D" parent="." index="2"]
+[node name="camera" type="Camera2D" parent="." index="2"]
 
 position = Vector2( 0.0626755, 0 )
 anchor_mode = 1
@@ -84,7 +84,7 @@ editor_draw_limits = false
 editor_draw_drag_margin = false
 _sections_unfolded = [ "Smoothing" ]
 
-[node name="player_anim" type="AnimationPlayer" parent="." index="3"]
+[node name="anim" type="AnimationPlayer" parent="." index="3"]
 
 root_node = NodePath("..")
 autoplay = ""
@@ -94,7 +94,7 @@ playback_speed = 1.0
 anims/swing_right = SubResource( 1 )
 blend_times = [  ]
 
-[node name="sword_col" type="Area2D" parent="." index="4"]
+[node name="sword" type="Area2D" parent="." index="4"]
 
 position = Vector2( 0, 0.153141 )
 rotation = 6.28319
@@ -107,7 +107,9 @@ audio_bus_override = false
 audio_bus_name = "Master"
 _sections_unfolded = [ "Pickable", "Transform" ]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="sword_col" index="0"]
+[node name="sprite" type="Sprite" parent="sword" index="0"]
+
+[node name="collison" type="CollisionPolygon2D" parent="sword" index="1"]
 
 rotation = 5.96903
 build_mode = 0
