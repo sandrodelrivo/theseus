@@ -63,14 +63,6 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="bat1" parent="enemies" index="0" instance=ExtResource( 6 )]
 
-position = Vector2( 313.234, 445.73 )
-
-[node name="bat2" parent="enemies" index="1" instance=ExtResource( 6 )]
-
-position = Vector2( 351.013, 435.126 )
-
-[node name="bat3" parent="enemies" index="2" instance=ExtResource( 6 )]
-
-position = Vector2( 286.492, 440.057 )
+position = Vector2( 300.988, 426.079 )
 
 
