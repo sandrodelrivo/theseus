@@ -1,0 +1,22 @@
+[remap]
+
+importer="vnen.tiled_tileset_importer"
+type="TileSet"
+path="res://.import/hyptosis_1.tsx-07a9039598038eacf931bb03bc90ec9a.res"
+
+[deps]
+
+source_file="res://tiles/tilesets/hyptosis_1.tsx"
+source_md5="1d64784360d9541478f4a7273c7afacb"
+
+dest_files=[ "res://.import/hyptosis_1.tsx-07a9039598038eacf931bb03bc90ec9a.res" ]
+dest_md5="f827b07828541b3a972545cf3df75979"
+
+[params]
+
+custom_properties=true
+tile_metadata=false
+image_flags=7
+embed_internal_images=false
+save_tiled_properties=false
+post_import_script=""

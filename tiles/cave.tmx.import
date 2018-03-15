@@ -1,0 +1,23 @@
+[remap]
+
+importer="vnen.tiled_importer"
+type="PackedScene"
+path="res://.import/cave.tmx-1bb73560824932da6d2a7b720a6a93f3.scn"
+
+[deps]
+
+source_file="res://tiles/cave.tmx"
+source_md5="0aadb0d66c368c96bf93134af8b85631"
+
+dest_files=[ "res://.import/cave.tmx-1bb73560824932da6d2a7b720a6a93f3.scn" ]
+dest_md5="bda957c54aef741ba6cea326c43ad7a7"
+
+[params]
+
+custom_properties=true
+tile_metadata=false
+uv_clip=true
+image_flags=0
+embed_internal_images=true
+save_tiled_properties=false
+post_import_script=""

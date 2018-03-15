@@ -1,6 +1,5 @@
 extends KinematicBody2D
 
-
 # variables
 #  movement
 var speedMax = 100 # upper limit of speedCurrent
@@ -12,31 +11,36 @@ var movement = Vector2() # vector which determines movement each physics tick
 #  facing
 var facing = Vector2()
 var direction = 0
+# attack
+var angleStartRel = -PI/2 # cardinal fcing direction+angleStart
+var angleStopRel = PI/4 # cardinal facing direction+angleStop
+var angleStop = 0
+var swingTime = 15 # number of physics ticks (1/60 seconds)
+#  stats
+var health = 100
+# signals
 
 enum STATE{
 	idle,
 	move,
-	dash
-}
-
-enum COMBAT_STATE{
-	
+	dash,
+	melee
 }
 
 # runs when node is loaded
 func _ready():
 	print("Player Script Ready!")
+	# initial state 
 	STATE = idle
-	#set_physics_process(false)
-	#set_process_input(true)
 
 # runs every physics tick
 func _physics_process(delta):
 	
 	# mouse position vector minus player postion vector
 	facing = get_global_mouse_position()-position
-	# converts angle to int on interval [0,7] with 0rad=0 increasing clockwise
-	$sprite.frame = range(8)[int(round(facing.angle()/(PI/4)))]
+	# converts angle to int on interval [0,3] with 0rad=0 increasing clockwise
+	direction = range(0,4)[int(round(facing.angle()/(PI/2)))]
+	$sprite.frame = direction*2
 	
 	# performs state processes which need to run each physics tick
 	match STATE:
@@ -47,41 +51,55 @@ func _physics_process(delta):
 			move_and_slide(movement)
 		dash:
 			pass
+		melee:
+			if ($sword.rotation < angleStop):
+				$sword.rotate((angleStopRel-angleStartRel)/swingTime)
+			else:
+				set_state("idle")
+			pass
 
 # runs when an input event occurs and determines state change
 func _input(event):
-	var event_list = getActions()
+	var eventList = get_actions()
 	match STATE:
 		idle:
 			speedCurrent = 0
 			# determine next state (check transitions)
-			if event_list["move"]:
-				STATE = move
-			if event_list["dash"]:
-				dash()
+			if eventList["move"]:
+				set_state("move")
+			elif eventList["dash"]:
+				set_state("dash")
+			elif eventList["melee"]:
+				set_state("melee")
 		move:
 			# determine next state (check transitions)
-			if event_list["dash"]:
-				dash()
-			elif not event_list["move"]:
-				setState("idle")
-		dash:
+			if eventList["dash"]:
+				set_state("dash")
+			elif eventList["melee"]:
+				set_state("melee")
+			elif not eventList["move"]:
+				set_state("idle")
+		dash:	# currently, never runs, state set to idle immediately in entry process
 			# determine next state (check transitions)
-			if event_list["move"]:
-				setState("move")
+			if eventList["move"]:
+				set_state("move")
 			else: 
-				setState("idle")
-	#rint(event, STATE)
+				set_state("idle")
+		melee:
+			pass
 
 # runs when state is changed, performs exit and enter processes
-func setState(new_state):
+func set_state(new_state):
 	# perform exit state processes
 	match (STATE):
-		"idle":
+		idle:
 			pass
-		"move":
+		move:
 			pass
-		"dash":
+		dash:
+			pass
+		melee:
+			$sword.visible = false
 			pass
 	
 	# perform enter state processes
@@ -93,10 +111,17 @@ func setState(new_state):
 			STATE = move
 		"dash":
 			STATE = dash
+			dash()
+			STATE = idle
+		"melee":
+			STATE = melee
+			$sword.visible = true
+			$sword.rotation = direction*PI/2+angleStartRel
+			angleStop = direction*PI/2+angleStopRel
 
 # looks at input and returns a dictionary of input states
-func getActions():
-	var event_list = {"move":false, "dash":false}
+func get_actions():
+	var event_list = {"move":false, "dash":false, "melee":false}
 	
 	# checks if any movement keys are held --> movement
 	if (Input.is_action_pressed("ui_up") or 
@@ -108,10 +133,12 @@ func getActions():
 	# checks if the right mouse has just been pressed --> dash
 	if (Input.is_action_just_pressed("click_right")):
 		event_list["dash"] = true
+	
+	if (Input.is_action_just_pressed("click_left")):
+		event_list["melee"] = true
 		
 	return event_list
 	
-
 # checks what controls are pressed and sets velocity
 func get_velocity():
 	# sets velocity to 0
@@ -134,6 +161,7 @@ func get_velocity():
 	# return velocity with magnitude of the current logical speed
 	return velocity.normalized()*speedCurrent
 	
+# performs dash action
 func dash():
 	var dash = get_global_mouse_position()-position
 	if (dash.length()>speedDash):

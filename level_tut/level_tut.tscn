@@ -1,0 +1,76 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://level_tut/level_tut.gd" type="Script" id=1]
+[ext_resource path="res://tiles/cave.tmx" type="PackedScene" id=2]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://level_tut/ui.tscn" type="PackedScene" id=5]
+[ext_resource path="res://enemies/spawners/spawner_bat.tscn" type="PackedScene" id=6]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Sprite
+
+var player
+var spot
+
+func _physics_process(delta):
+	player = get_node(\"../player\")
+	
+	spot = get_global_mouse_position()
+	if (spot.distance_to(player.position)>player.speedDash):
+		spot += (player.position-spot)+player.facing.normalized()*player.speedDash
+	
+	position = spot
+
+	pass"
+
+[node name="root" type="Node2D" index="0"]
+
+script = ExtResource( 1 )
+_sections_unfolded = [ "Material", "Transform", "Z Index" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="tilemap" parent="." index="0" instance=ExtResource( 2 )]
+
+_sections_unfolded = [ "Transform" ]
+
+[node name="player" parent="." index="1" instance=ExtResource( 3 )]
+
+position = Vector2( 309.375, 595.994 )
+
+[node name="dash_location" type="Sprite" parent="." index="2"]
+
+position = Vector2( 344.576, 573.838 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 4 )
+script = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="screen" type="CanvasLayer" parent="." index="3"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="ui" parent="screen" index="0" instance=ExtResource( 5 )]
+
+[node name="enemies" type="Node" parent="." index="4"]
+
+[node name="bat1" parent="enemies" index="0" instance=ExtResource( 6 )]
+
+position = Vector2( 313.234, 445.73 )
+
+[node name="bat2" parent="enemies" index="1" instance=ExtResource( 6 )]
+
+position = Vector2( 351.013, 435.126 )
+
+[node name="bat3" parent="enemies" index="2" instance=ExtResource( 6 )]
+
+position = Vector2( 286.492, 440.057 )
+
+
