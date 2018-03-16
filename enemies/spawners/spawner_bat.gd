@@ -5,3 +5,4 @@ onready var to_spawn = preload("res://enemies/bat.tscn")
 
 func _ready():
 	pass
+

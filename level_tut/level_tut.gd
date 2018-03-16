@@ -21,18 +21,18 @@ func _ready():
 	print("Main Script Ready!")
 	
 func _physics_process(delta):
+	# cycles through all nodes which are a child of the enemies container
 	for spawner in enemy_spawners:
+		# creates float for distance form player to spawner
 		var player_to_spawner = spawner.position.distance_to(player.position)
 		
+		# spawns the enemy if it not spawned and is within a range of the player
 		if (spawner.visible and 50<player_to_spawner and player_to_spawner<100):
 			spawn(spawner)
+		# despawns enemy if spawned outside a certain range of player
 		elif ((not spawner.visible) and 100<enemy_instances[spawner].position.distance_to(player.position)):
 			despawn(spawner)
 			
-	
-func _input(event):
-	if Input.is_action_just_pressed("face_up"):
-		spawn(enemy_spawners[0])
 
 
 func spawn(spawner):
@@ -52,5 +52,3 @@ func despawn(spawner):
 	enemy_instances.erase(spawner)
 	# shows the spawner
 	spawner.visible = true
-
-
