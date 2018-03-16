@@ -56,7 +56,7 @@ func _physics_process(delta):
 			var to_damage = $sword.get_overlapping_areas()
 			if (len(to_damage)>0):
 				for target in to_damage:
-					target.get_parent().damage(10, "type_test")
+					target.damage(10, "type_test")
 			
 			if ($sword.rotation < angleStop):
 				$sword.rotate((angleStopRel-angleStartRel)/swingTime)

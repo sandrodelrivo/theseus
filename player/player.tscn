@@ -28,7 +28,7 @@ tracks/0/keys = {
 custom_solver_bias = 0.0
 extents = Vector2( 7.89173, 1.7195 )
 
-[node name="root_player" type="KinematicBody2D" index="0"]
+[node name="root_player" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 1

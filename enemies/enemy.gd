@@ -2,26 +2,24 @@
 # creates an enemy
 
 # stats
-var _health
-var _armor
-var _strength
-var _speed
+var _health = 0
+var _armor = 0
+var _strength = 0
+var _speed = 0
 
-# private variables, do not access outside class
-var damage_timer = 0
+var _spawned = false
 var _alive = true
 
+var damage_timer = 0
+
 # spawning
-var spawner
-var instance
+var _spawner
+var _instance
 
 
 # initializers
-func _init(health, armor, strength, speed):
-	self._health = health
-	self._armor = armor
-	self._strength = strength
-	self._speed = speed
+func _init(spawner):
+	self._spawner = spawner
 
 
 func _state_process():
@@ -29,34 +27,35 @@ func _state_process():
 		damage_timer-=1
 
 
-func spawn(spawner):
-	# create new dictionary entry with key of spawner and key value of an instance of the enemy scene
-	instance = spawner.to_spawn.instance()
-	# adds the instance to the enemy container
-	spawner.get_parent().add_child(instance)
-	# sset position of instance to that of the spawner
-	instance.position = spawner.position
-	# hide the spawner
-	spawner.visible = false
-"""
-func despawn(spawner):
-	# despawn instance of enemy
-	enemy_instances[spawner].queue_free()
-	# remove dictionary entry
-	enemy_instances.erase(spawner)
-	# shows the spawner
-	spawner.visible = true"""
+func _spawn():
+	_instance = _spawner.to_spawn.instance()
+	_spawner.get_parent().add_child(_instance)
+	_instance.position = _spawner.position
+	
+	_spawner.visible = false
+	_spawned = true
+	
+	_instance.get_node("hit_box").spawner = _spawner
+	_spawner._on_spawn()
 
-func _damage(value, type, instance):
+func _despawn():
+	_instance.queue_free()
+	
+	_spawner.visible = true
+	_spawned = false
+	_spawner._on_despawn()
+
+func _damage(value, type):
 	if (damage_timer == 0):
 		damage_timer = 30
 		if (value>_armor):
 			_health -= value+_armor
 		
 		if (_health<=0):
-			_kill(instance)
+			_kill()
 		
 		print(_health, type)
 
-func _kill(instance):
-	instance.queue_free()
+func _kill():
+	_instance.queue_free()
+	_alive = false
