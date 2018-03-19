@@ -1,0 +1,22 @@
+[remap]
+
+importer="vnen.tiled_tileset_importer"
+type="TileSet"
+path="res://.import/outdoors.tsx-2d63e90f17cfe0da8739804c94047264.res"
+
+[deps]
+
+source_file="res://tiles/outdoors.tsx"
+source_md5="4bee1ab15202a169fb3db86c6af96a8e"
+
+dest_files=[ "res://.import/outdoors.tsx-2d63e90f17cfe0da8739804c94047264.res" ]
+dest_md5="b8374e6e83b8edcbbae0fb4e2af55532"
+
+[params]
+
+custom_properties=true
+tile_metadata=false
+image_flags=7
+embed_internal_images=false
+save_tiled_properties=false
+post_import_script=""

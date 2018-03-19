@@ -1,24 +1,31 @@
 extends KinematicBody2D
 
-# variables
+# ---------- variables ----------
+
 #  movement
 var speedMax = 100 # upper limit of speedCurrent
 var speedCurrent = 0 # magnitude to which velocity is set
-var speedDash = 100 # how far the dash moves
+var speedDash = 70 # how far the dash moves
 var acc = 10 # acceleration interval
-var dec = 20 # deceleration interval
+var dec = 15 # deceleration interval
 var movement = Vector2() # vector which determines movement each physics tick
+
 #  facing
 var facing = Vector2()
 var direction = 0
+
 # attack
 var angleStartRel = -PI/2 # cardinal fcing direction+angleStart
 var angleStopRel = PI/4 # cardinal facing direction+angleStop
 var angleStop = 0
 var swingTime = 15 # number of physics ticks (1/60 seconds)
+
 #  stats
 var health = 100
+
 # signals
+
+# ---------- state handling ----------
 
 enum STATE{
 	idle,
@@ -30,18 +37,20 @@ enum STATE{
 # runs when node is loaded
 func _ready():
 	print("Player Script Ready!")
-	# initial state 
+	# initial state
 	STATE = idle
 
 # runs every physics tick
 func _physics_process(delta):
-	
+
 	# mouse position vector minus player postion vector
 	facing = get_global_mouse_position()-position
 	# converts angle to int on interval [0,3] with 0rad=0 increasing clockwise
 	direction = range(0,4)[int(round(facing.angle()/(PI/2)))]
 	$sprite.frame = direction*2
 	
+	$camera.position = get_owner().get_node("dash_location").position - position
+
 	# performs state processes which need to run each physics tick
 	match STATE:
 		idle:
@@ -56,8 +65,10 @@ func _physics_process(delta):
 			var to_damage = $sword.get_overlapping_areas()
 			if (len(to_damage)>0):
 				for target in to_damage:
-					target.damage(10, "type_test")
-			
+
+					if target.name != "player_hit_box":
+						target.damage(10, "type_test")
+
 			if ($sword.rotation < angleStop):
 				$sword.rotate((angleStopRel-angleStartRel)/swingTime)
 			else:
@@ -89,7 +100,7 @@ func _input(event):
 			# determine next state (check transitions)
 			if eventList["move"]:
 				set_state("move")
-			else: 
+			else:
 				set_state("idle")
 		melee:
 			pass
@@ -107,10 +118,10 @@ func set_state(new_state):
 		melee:
 			$sword.visible = false
 			pass
-	
+
 	# perform enter state processes
 	match (new_state):
-		"idle": 
+		"idle":
 			STATE = idle
 			speedCurrent = 0
 		"move":
@@ -128,28 +139,28 @@ func set_state(new_state):
 # looks at input and returns a dictionary of input states
 func get_actions():
 	var event_list = {"move":false, "dash":false, "melee":false}
-	
+
 	# checks if any movement keys are held --> movement
-	if (Input.is_action_pressed("ui_up") or 
-		Input.is_action_pressed("ui_down") or 
-		Input.is_action_pressed("ui_right") or 
+	if (Input.is_action_pressed("ui_up") or
+		Input.is_action_pressed("ui_down") or
+		Input.is_action_pressed("ui_right") or
 		Input.is_action_pressed("ui_left")):
 		event_list["move"] = true
-	
+
 	# checks if the right mouse has just been pressed --> dash
-	if (Input.is_action_just_pressed("click_right")):
+	if (Input.is_action_just_pressed("ui_select")):
 		event_list["dash"] = true
-	
+
 	if (Input.is_action_just_pressed("click_left")):
 		event_list["melee"] = true
-		
+
 	return event_list
-	
+
 # checks what controls are pressed and sets velocity
 func get_velocity():
 	# sets velocity to 0
 	var velocity = Vector2(0,0)
-	
+
 	# adds 1 to either horizontal or vertical depending on keypress
 	if (Input.is_action_pressed("ui_up")):
 		velocity.y-=1
@@ -159,18 +170,17 @@ func get_velocity():
 		velocity.x+=1
 	if (Input.is_action_pressed("ui_left")):
 		velocity.x-=1
-	
+
 	# increases speed by acc if it is less than speedMax
 	if speedCurrent < speedMax:
 			speedCurrent += acc
-	
+
 	# return velocity with magnitude of the current logical speed
 	return velocity.normalized()*speedCurrent
-	
+
 # performs dash action
 func dash():
 	var dash = get_global_mouse_position()-position
-	if (dash.length()>speedDash):
-		dash = dash.normalized()*speedDash
-	
+	dash = dash.normalized()*speedDash
+
 	move_and_slide(dash*60)

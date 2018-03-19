@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://player/player_8d.png" type="Texture" id=2]
@@ -28,7 +28,12 @@ tracks/0/keys = {
 custom_solver_bias = 0.0
 extents = Vector2( 7.89173, 1.7195 )
 
-[node name="root_player" type="KinematicBody2D"]
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 5.997, 6.08626 )
+
+[node name="root_player" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -53,7 +58,6 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="camera" type="Camera2D" parent="." index="2"]
 
-position = Vector2( 0.0626755, 0 )
 anchor_mode = 1
 rotating = false
 current = true
@@ -76,7 +80,7 @@ drag_margin_bottom = 0.2
 editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
-_sections_unfolded = [ "Smoothing" ]
+_sections_unfolded = [ "Smoothing", "Transform" ]
 
 [node name="anim" type="AnimationPlayer" parent="." index="3"]
 
@@ -113,5 +117,19 @@ _sections_unfolded = [ "Offset", "Transform" ]
 position = Vector2( 7.92399, 1.56633 )
 shape = SubResource( 2 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="player_hit_box" type="Area2D" parent="." index="5"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_hit_box" index="0"]
+
+shape = SubResource( 3 )
 
 

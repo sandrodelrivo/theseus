@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://level_tut/level_tut.gd" type="Script" id=1]
-[ext_resource path="res://tiles/cave.tmx" type="PackedScene" id=2]
+[ext_resource path="res://tiles/island.tmx" type="PackedScene" id=2]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://icon.png" type="Texture" id=4]
 [ext_resource path="res://level_tut/ui.tscn" type="PackedScene" id=5]
@@ -25,7 +25,7 @@ func _physics_process(delta):
 
 	pass"
 
-[node name="root" type="Node2D" index="0"]
+[node name="root" type="Node2D"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Material", "Transform", "Z Index" ]
@@ -33,13 +33,13 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="tilemap" parent="." index="0" instance=ExtResource( 2 )]
+[node name="island" parent="." index="0" instance=ExtResource( 2 )]
 
-_sections_unfolded = [ "Transform" ]
+position = Vector2( 3.4071, 5.59708 )
 
 [node name="player" parent="." index="1" instance=ExtResource( 3 )]
 
-position = Vector2( 309.375, 595.994 )
+position = Vector2( 294.257, 275.279 )
 
 [node name="dash_location" type="Sprite" parent="." index="2"]
 
@@ -63,14 +63,14 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="bat1" parent="enemies" index="0" instance=ExtResource( 6 )]
 
-position = Vector2( 300.988, 426.079 )
+position = Vector2( 248.155, 243.382 )
 
 [node name="bat2" parent="enemies" index="1" instance=ExtResource( 6 )]
 
-position = Vector2( 354.065, 440.801 )
+position = Vector2( 306.232, 225.104 )
 
 [node name="bat3" parent="enemies" index="2" instance=ExtResource( 6 )]
 
-position = Vector2( 360.264, 404.383 )
+position = Vector2( 312.431, 188.686 )
 
 
