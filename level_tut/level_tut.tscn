@@ -2,10 +2,10 @@
 
 [ext_resource path="res://level_tut/level_tut.gd" type="Script" id=1]
 [ext_resource path="res://tiles/island.tmx" type="PackedScene" id=2]
-[ext_resource path="res://player/player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://icon.png" type="Texture" id=4]
-[ext_resource path="res://level_tut/ui.tscn" type="PackedScene" id=5]
-[ext_resource path="res://enemies/spawners/spawner_bat.tscn" type="PackedScene" id=6]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://level_tut/ui.tscn" type="PackedScene" id=4]
+[ext_resource path="res://enemies/spawners/spawner_direwolf.tscn" type="PackedScene" id=5]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=6]
 
 [sub_resource type="GDScript" id=1]
 
@@ -21,11 +21,9 @@ func _physics_process(delta):
 	if (spot.distance_to(player.position)>player.speedDash):
 		spot += (player.position-spot)+player.facing.normalized()*player.speedDash
 	
-	position = spot
+	position = spot"
 
-	pass"
-
-[node name="root" type="Node2D"]
+[node name="root" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Material", "Transform", "Z Index" ]
@@ -37,19 +35,15 @@ __meta__ = {
 
 position = Vector2( 3.4071, 5.59708 )
 
-[node name="player" parent="." index="1" instance=ExtResource( 3 )]
-
-position = Vector2( 294.257, 275.279 )
-
-[node name="dash_location" type="Sprite" parent="." index="2"]
+[node name="dash_location" type="Sprite" parent="." index="1"]
 
 position = Vector2( 344.576, 573.838 )
 scale = Vector2( 0.2, 0.2 )
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 script = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="screen" type="CanvasLayer" parent="." index="3"]
+[node name="screen" type="CanvasLayer" parent="." index="2"]
 
 layer = 1
 offset = Vector2( 0, 0 )
@@ -57,20 +51,16 @@ rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
-[node name="ui" parent="screen" index="0" instance=ExtResource( 5 )]
+[node name="ui" parent="screen" index="0" instance=ExtResource( 4 )]
 
-[node name="enemies" type="Node" parent="." index="4"]
+[node name="enemies" type="Node" parent="." index="3"]
 
-[node name="bat1" parent="enemies" index="0" instance=ExtResource( 6 )]
+[node name="wolf1" parent="enemies" index="0" instance=ExtResource( 5 )]
 
-position = Vector2( 248.155, 243.382 )
+position = Vector2( 530.83, 222.63 )
 
-[node name="bat2" parent="enemies" index="1" instance=ExtResource( 6 )]
+[node name="player" parent="." index="4" instance=ExtResource( 6 )]
 
-position = Vector2( 306.232, 225.104 )
-
-[node name="bat3" parent="enemies" index="2" instance=ExtResource( 6 )]
-
-position = Vector2( 312.431, 188.686 )
+position = Vector2( 334.762, 263.587 )
 
 
