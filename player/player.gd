@@ -83,19 +83,19 @@ func _physics_process(delta):
 			match walk_direction:
 					0:
 						if $anim.assigned_animation != "player_walk_right":
-							print("playing walk right")
+							#print("playing walk right")
 							$anim.play("player_walk_right")
 					1:
 						if $anim.assigned_animation != "player_walk_down":
-							print("playing walk down")
+							#print("playing walk down")
 							$anim.play("player_walk_down")
 					2:
 						if $anim.assigned_animation != "player_walk_left":
-							print("playing walk left")
+							#print("playing walk left")
 							$anim.play("player_walk_left")
 					3:
 						if $anim.assigned_animation != "player_walk_up":
-							print("playing walk up")
+							#print("playing walk up")
 							$anim.play("player_walk_up")
 
 			movement = get_velocity()
@@ -168,7 +168,7 @@ func set_state(new_state):
 			STATE = idle
 			speedCurrent = 0
 		"move":
-			print("Stopping Anim!")
+		#	print("Stopping Anim!")
 			$anim.stop()
 			STATE = move
 		"dash":

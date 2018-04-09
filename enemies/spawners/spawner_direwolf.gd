@@ -15,7 +15,7 @@ var relation = null
 
 var WAIT_FRAMES = 60
 var waited_frames = 0
-var LUNGE_CONSTANT = 1500
+var LUNGE_CONSTANT = 200
 
 # movement variables
 var velocity = Vector2()
@@ -57,7 +57,7 @@ func check_spawn():
 			var player_to_spawner = position.distance_to(player.position)
 			# spawns the enemy if it not spawned and is within a range of the player
 			#print ("Player to Spawn: ", player_to_spawner, " visible: ", visible, "Spawn Range: ", spawn_range)
-			if (visible and player_to_spawner<spawn_range):
+			if (visible and (spawn_range/2)<player_to_spawner and player_to_spawner<spawn_range):
 				if form == null:
 					print("DIREWOLF INSTANCED")
 					form = Enemy.new(self)
@@ -67,6 +67,7 @@ func check_spawn():
 			# despawns enemy if spawned outside a certain range of player
 			elif (not visible):
 				if form != null and form._alive:
+					#print("Distance is: ", form._instance.position.distance_to(player.position))
 					if spawn_range<form._instance.position.distance_to(player.position):
 						print("Despawning Direwolf!")
 						form._despawn()
@@ -111,6 +112,8 @@ func _combat(isRepeat):
 	match C_STATE:
 		tracking:
 
+			waited_frames += 1
+
 			relation = player.position - form._instance.position
 			angle = relation.angle()
 
@@ -121,12 +124,13 @@ func _combat(isRepeat):
 			var motion = velocity
 			motion = form._instance.move_and_collide(motion/60)
 
-			if (form._get_distance() < lunge_range):
+			if (form._get_distance() < lunge_range and waited_frames > WAIT_FRAMES):
+				waited_frames = 0
 				relation = player.position - form._instance.position
 				#print("		[COMBAT STATE] - Warmup")
 				C_STATE = warmup
 			else:
-				#print("		[COMBAT STATE] - Tracking")
+			 #print("		[COMBAT STATE] - Tracking")
 				C_STATE = tracking
 
 		warmup:
